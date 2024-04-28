@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Slot, Stack } from 'expo-router'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Loges S 20MIS1100</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const RootLayout = () => {
+    //slot renders the current child component (like children prop in react)
+    return (
+        //react fragment - <></>
+        // <> 
+        //  <Text>Header</Text>
+        // <Slot/>
+        // <Text>Footer</Text>
+        //</>
+        <Stack>
+            <Stack.Screen name='index' options={{headerShown:false}}></Stack.Screen>
+        </Stack>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'gold',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default RootLayout
+

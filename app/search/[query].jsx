@@ -17,7 +17,7 @@ const Search = () => {
     ()=> searchPosts(query)
   );
 
-  console.log(query,posts);
+  //console.log(query,posts);
 
   useEffect(() => {
     refetch()

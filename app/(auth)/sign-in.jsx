@@ -5,16 +5,20 @@ import { images } from '../../constants';
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import { Link,router } from 'expo-router';
-import { signIn } from '../../lib/appwrite';
+import { getCurrentUser,signIn } from '../../lib/appwrite';
+import { useGlobalContext } from "../../context/GlobalProvider";
+
 
 const SignIn = () => {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setform] = useState({
     email: '',
     password: ''
   })
 
   // since handlepress=submit takes time , we use loading
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  //const [isSubmitting, setIsSubmitting] = useState(false)
 
   const submit = async () => {
     if(!form.email === "" || form.password === ""){
@@ -30,12 +34,13 @@ const SignIn = () => {
       //after u close and open the app 
       const result = await getCurrentUser();
       setUser(result);
-      setIsLogged(true);
-      Alert.alert("Success", "User signed in successfully");
-      
+      setIsLoggedIn(true);
+      Alert.alert("Success", "User signed in successfully");      
       router.replace("/home");
+
     } catch (error) {
-      Alert.alert('Error', error.message)
+      Alert.alert("Error", error.message);
+      console.log("console log error",error);
     }finally{
         setIsSubmitting(false);
     }

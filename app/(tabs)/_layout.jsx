@@ -54,21 +54,8 @@ const TabsLayout = () => {
             )
           }}
         />
+        
         <Tabs.Screen
-          name='bookmark'
-          options={{
-            title: 'Bookmark',
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                icon={icons.bookmark}
-                color={color}
-                name="Bookmark"
-                focused={focused}
-              />
-            )
-          }}
-        /><Tabs.Screen
           name='create'
           options={{
             title: 'Create',
@@ -82,7 +69,8 @@ const TabsLayout = () => {
               />
             )
           }}
-        /><Tabs.Screen
+        />
+        <Tabs.Screen
           name='profile'
           options={{
             title: 'Profile',
@@ -92,6 +80,21 @@ const TabsLayout = () => {
                 icon={icons.profile}
                 color={color}
                 name="Profile"
+                focused={focused}
+              />
+            )
+          }}
+        />
+        <Tabs.Screen
+          name='bookmark'
+          options={{
+            title: 'Bookmark',
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.upload}
+                color={color}
+                name="Extra"
                 focused={focused}
               />
             )
